@@ -24,8 +24,8 @@ A professional, offline recovery and export tool for **Telegram Desktop (macOS)*
 - [Date Filtering](#date-filtering)
 - [Safety & Privacy](#safety--privacy)
 - [Versioning](#versioning)
+- [Updating](#updating)
 - [Quality Checks](#quality-checks)
-- [Troubleshooting](#troubleshooting)
 - [Project Structure](#project-structure)
 - [Credits](#credits)
 - [License](#license)
@@ -36,9 +36,9 @@ A professional, offline recovery and export tool for **Telegram Desktop (macOS)*
 
 Telegram Desktop stores messages locally in an encrypted SQLite database. This tool:
 
-1. Decrypts `db_sqlite` using `.tempkeyEncrypted`
-2. Parses the Postbox key/value format
-3. Exports a clean transcript that a non‑technical user can read
+- Decrypts `db_sqlite` using `.tempkeyEncrypted`
+- Parses the Postbox key/value format
+- Exports a clean transcript that a non‑technical user can read
 
 It is designed for **offline recovery** on a Mac where the local cache still exists.
 
@@ -46,7 +46,7 @@ It is designed for **offline recovery** on a Mac where the local cache still exi
 
 ## Motivation & Use Case
 
-Telegram does not provide server‑side recovery for deleted chats. In real‑world scenarios (accidental deletion, account changes, device loss, or audit requirements), the **only remaining source of truth** can be the local encrypted cache on a macOS device.
+Telegram does not provide server‑side recovery for deleted chats. In real‑world scenarios such as accidental deletion, account changes, device loss, or audit requirements, the **only remaining source of truth** can be the local encrypted cache on a macOS device.
 
 This project was created after a family conversation was removed with no way to restore it via Telegram’s servers. The local Mac still had the encrypted cache, so this tool was built to **recover what remained locally** and convert it into a clean, shareable export.
 
@@ -56,20 +56,20 @@ If you need a **defensible, offline transcript** from Telegram Desktop’s local
 
 ## Key Features
 
-- **Offline decryption** using Telegram’s local key format (dbKey + dbSalt)
-- **Human‑readable exports** with names, timestamps, and link handling
-- **Modern HTML transcript** with date jump + back‑to‑top button
-- **CSV export** for analysis or spreadsheets
-- **Date filters** for targeted ranges
-- **Best‑effort peer mapping** for clean names
+- Offline decryption using Telegram’s local key format (dbKey + dbSalt)
+- Human‑readable exports with names, timestamps, and link handling
+- Modern HTML transcript with date jump + back‑to‑top
+- CSV export for analysis or spreadsheets
+- Date filters for targeted ranges
+- Best‑effort peer mapping for clean names
 
 ---
 
 ## Prerequisites
 
-- **macOS** with Telegram Desktop data present
-- **Python 3.10+** (tested on 3.11–3.13)
-- **Virtual environment recommended**
+- macOS with Telegram Desktop data present
+- Python 3.10 or higher (tested on 3.11–3.13)
+- Virtual environment recommended
 
 ---
 
@@ -114,7 +114,7 @@ telegram-exporter decrypt \
   --out plaintext.db
 ```
 
-If **Passcode Lock** is enabled in Telegram Desktop:
+If Passcode Lock is enabled in Telegram Desktop:
 
 ```bash
 TG_LOCAL_PASSCODE="your-passcode" \
@@ -124,7 +124,7 @@ TG_LOCAL_PASSCODE="your-passcode" \
 ### 2. Find the peer ID
 
 ```bash
-telegram-exporter list-peers --db plaintext.db --search "Alice"
+telegram-exporter list-peers --db plaintext.db --search "Alex"
 ```
 
 ### 3. Export a readable transcript
@@ -174,7 +174,7 @@ telegram-exporter export --db plaintext.db --peer-id 123456789 --format csv --ou
   <div class="brand">
     <div class="logo">💬</div>
     <div class="title-area">
-      <h1>Alice Example</h1>
+      <h1>Alex Example</h1>
       <p class="subtitle">Recovery export for Telegram Desktop (macOS)</p>
     </div>
   </div>
@@ -185,7 +185,7 @@ telegram-exporter export --db plaintext.db --peer-id 123456789 --format csv --ou
 ### Markdown (snippet)
 
 ```markdown
-# Telegram Chat History: Alice Example
+# Telegram Chat History: Alex Example
 
 **Exported:** 2026-02-04 16:05:12
 **Total Messages:** 418
@@ -201,7 +201,7 @@ telegram-exporter export --db plaintext.db --peer-id 123456789 --format csv --ou
 
 ```csv
 date,time,timestamp,direction,speaker,text,peer_id,author_id
-2026-02-04,14:13:09,1770214389,out,Me,"3h48 is good also",23556879,23556879
+2026-02-04,14:13:09,1770214389,out,Me,"3h48 is good also",123456789,123456789
 ```
 
 ---
@@ -229,10 +229,10 @@ Formats supported:
 
 ## Safety & Privacy
 
-- Keep the Mac **offline** during recovery to avoid sync deletions.
+- Keep the Mac offline during recovery to avoid sync deletions
 - Media files (if cached) live in:
   `~/Library/Group Containers/6N38VWS5BX.ru.keepcoder.Telegram/stable/account-*/files/`
-- If decryption fails, retry with `--debug` to see which SQLCipher profile succeeds.
+- If decryption fails, retry with `--debug` to see which SQLCipher profile succeeds
 
 ---
 
@@ -247,16 +247,9 @@ telegram-exporter --version
 To bump the version:
 
 ```bash
-# patch (0.1.1 -> 0.1.2)
 ./scripts/bump_version.py patch
-
-# minor (0.1.1 -> 0.2.0)
 ./scripts/bump_version.py minor
-
-# major (0.1.1 -> 1.0.0)
 ./scripts/bump_version.py major
-
-# explicit
 ./scripts/bump_version.py --set 1.2.3
 ```
 
@@ -277,30 +270,14 @@ git pull
 pip install -e .
 ```
 
-## Quality Checks
-
-Run formatting and linting locally:
-
-```bash
-black src/telegram_message_exporter telegram_exporter.py
-ruff check src/telegram_message_exporter telegram_exporter.py
-pylint src/telegram_message_exporter telegram_exporter.py
-```
-
 ---
 
-## Troubleshooting
+## Quality Checks
 
-**“file is not a database”**
-- Key and DB are mismatched (wrong snapshot or wrong account path)
-- Passcode Lock is enabled but not provided
-
-**Passcode Lock on**
-- Use `TG_LOCAL_PASSCODE` or `--passcode`
-
-**mmh3 errors**
 ```bash
-pip install mmh3==4.1.0
+black src/telegram_message_exporter telegram_exporter.py scripts/bump_version.py
+ruff check src/telegram_message_exporter telegram_exporter.py scripts/bump_version.py
+pylint src/telegram_message_exporter telegram_exporter.py
 ```
 
 ---
@@ -311,6 +288,8 @@ pip install mmh3==4.1.0
 telegram-message-exporter/
 ├── pyproject.toml                     # Packaging metadata + CLI entrypoint
 ├── telegram_exporter.py               # Convenience wrapper (no install)
+├── scripts/
+│   └── bump_version.py                # Version helper
 ├── src/
 │   └── telegram_message_exporter/
 │       ├── __init__.py                # Package entrypoint
