@@ -11,7 +11,7 @@ import importlib
 import os
 import struct
 
-from hashing import TEMPKEY_MURMUR_SEED, murmur_hash, murmur_hash_bytes
+from .hashing import TEMPKEY_MURMUR_SEED, murmur_hash, murmur_hash_bytes
 
 try:
     AES = importlib.import_module("Cryptodome.Cipher.AES")

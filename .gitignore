@@ -5,6 +5,9 @@ __pycache__/
 *.db
 *.sqlite
 *.sqlite3
+dist/
+build/
+*.egg-info/
 db_sqlite*
 chat_*.md
 *_chat.md

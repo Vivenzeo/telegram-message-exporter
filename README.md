@@ -73,6 +73,12 @@ If you need a **defensible, offline transcript** from Telegram Desktop’s local
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
+pip install -e .
+```
+
+If you prefer a requirements file:
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -83,7 +89,7 @@ pip install -r requirements.txt
 ### 1. Decrypt the database
 
 ```bash
-python3 telegram_exporter.py decrypt \
+telegram-exporter decrypt \
   --key ~/Library/Group\ Containers/6N38VWS5BX.ru.keepcoder.Telegram/stable/.tempkeyEncrypted \
   --db  ~/Library/Group\ Containers/6N38VWS5BX.ru.keepcoder.Telegram/stable/account-*/postbox/db/db_sqlite \
   --out plaintext.db
@@ -93,19 +99,19 @@ If **Passcode Lock** is enabled in Telegram Desktop:
 
 ```bash
 TG_LOCAL_PASSCODE="your-passcode" \
-  python3 telegram_exporter.py decrypt --key <key> --db <db> --out plaintext.db
+  telegram-exporter decrypt --key <key> --db <db> --out plaintext.db
 ```
 
 ### 2. Find the peer ID
 
 ```bash
-python3 telegram_exporter.py list-peers --db plaintext.db --search "Alice"
+telegram-exporter list-peers --db plaintext.db --search "Alice"
 ```
 
 ### 3. Export a readable transcript
 
 ```bash
-python3 telegram_exporter.py export \
+telegram-exporter export \
   --db plaintext.db \
   --peer-id 123456789 \
   --me-name "Me" \
@@ -121,21 +127,21 @@ python3 telegram_exporter.py export \
 Clean, modern transcript with date jump and back‑to‑top.
 
 ```bash
-python3 telegram_exporter.py export --db plaintext.db --peer-id 123456789 --format html --me-name "Me" --out chat_export.html
+telegram-exporter export --db plaintext.db --peer-id 123456789 --format html --me-name "Me" --out chat_export.html
 ```
 
 ### Markdown
 Readable, portable, easy to email.
 
 ```bash
-python3 telegram_exporter.py export --db plaintext.db --peer-id 123456789 --format md --me-name "Me" --out chat_export.md
+telegram-exporter export --db plaintext.db --peer-id 123456789 --format md --me-name "Me" --out chat_export.md
 ```
 
 ### CSV
 For spreadsheets or analysis.
 
 ```bash
-python3 telegram_exporter.py export --db plaintext.db --peer-id 123456789 --format csv --out chat_export.csv
+telegram-exporter export --db plaintext.db --peer-id 123456789 --format csv --out chat_export.csv
 ```
 
 ---
@@ -145,7 +151,7 @@ python3 telegram_exporter.py export --db plaintext.db --peer-id 123456789 --form
 Export only a range (inclusive):
 
 ```bash
-python3 telegram_exporter.py export \
+telegram-exporter export \
   --db plaintext.db \
   --peer-id 123456789 \
   --start-date 2024-01-01 \
@@ -175,9 +181,9 @@ Formats supported:
 Run formatting and linting locally:
 
 ```bash
-black *.py
-ruff check *.py
-pylint *.py
+black src/telegram_message_exporter telegram_exporter.py
+ruff check src/telegram_message_exporter telegram_exporter.py
+pylint src/telegram_message_exporter telegram_exporter.py
 ```
 
 ---
@@ -202,14 +208,20 @@ pip install mmh3==4.1.0
 
 ```
 telegram-message-exporter/
-├── telegram_exporter.py               # CLI entry point
-├── crypto.py                          # SQLCipher + tempkey handling
-├── db.py                              # DB heuristics + message extraction
-├── exporters.py                       # HTML / Markdown / CSV
-├── postbox.py                         # Postbox parsing utilities
-├── models.py                          # Message data model
-├── utils.py                           # Date + link helpers
-├── hashing.py                         # Murmur3 helper
+├── pyproject.toml                     # Packaging metadata + CLI entrypoint
+├── telegram_exporter.py               # Convenience wrapper (no install)
+├── src/
+│   └── telegram_message_exporter/
+│       ├── __init__.py                # Package entrypoint
+│       ├── __main__.py                # python -m entrypoint
+│       ├── cli.py                     # Argument parsing + commands
+│       ├── crypto.py                  # SQLCipher + tempkey handling
+│       ├── db.py                      # DB heuristics + message extraction
+│       ├── exporters.py               # HTML / Markdown / CSV
+│       ├── postbox.py                 # Postbox parsing utilities
+│       ├── models.py                  # Message data model
+│       ├── utils.py                   # Date + link helpers
+│       └── hashing.py                 # Murmur3 helper
 ├── requirements.txt                   # Python dependencies
 └── README.md
 ```

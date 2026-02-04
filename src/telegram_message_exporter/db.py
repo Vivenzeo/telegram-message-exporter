@@ -6,8 +6,8 @@ import sqlite3
 from dataclasses import dataclass
 from typing import Iterable, Optional
 
-from models import Message
-from utils import parse_timestamp
+from .models import Message
+from .utils import parse_timestamp
 
 
 def list_tables(conn: sqlite3.Connection) -> list[str]:

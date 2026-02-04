@@ -9,8 +9,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Iterable, Optional
 
-from hashing import murmur_hash
-from models import Message
+from .hashing import murmur_hash
+from .models import Message
 
 
 class ByteReader:

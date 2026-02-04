@@ -9,8 +9,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from models import Message
-from utils import linkify_html, linkify_markdown
+from .models import Message
+from .utils import linkify_html, linkify_markdown
 
 HTML_BOOTSTRAP = (
     '<link rel="stylesheet" '
