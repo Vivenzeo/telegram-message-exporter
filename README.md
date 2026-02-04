@@ -227,6 +227,22 @@ The canonical version is stored in `VERSION` and exposed via:
 telegram-exporter --version
 ```
 
+To bump the version:
+
+```bash
+# patch (0.1.1 -> 0.1.2)
+./scripts/bump_version.py patch
+
+# minor (0.1.1 -> 0.2.0)
+./scripts/bump_version.py minor
+
+# major (0.1.1 -> 1.0.0)
+./scripts/bump_version.py major
+
+# explicit
+./scripts/bump_version.py --set 1.2.3
+```
+
 ---
 
 ## Quality Checks
