@@ -371,9 +371,7 @@ telegram-message-exporter/
 
 ## Credits
 
-This project builds on community reverse‑engineering work. The initial breakthrough and reference implementation for Telegram Desktop’s local key format and Postbox structure comes from **@stek29** (GitHub). This tool extends those ideas into a polished, end‑user‑friendly CLI and export workflow.
-
-- https://gist.github.com/stek29/8a7ac0e673818917525ec4031d77a713
+This project builds on community reverse‑engineering work. Special thanks to **[@stek29](https://github.com/stek29)** for the original research and [reference implementation](https://gist.github.com/stek29/8a7ac0e673818917525ec4031d77a713) of Telegram Desktop’s local key format and Postbox structure. This tool extends those ideas into a polished, end‑user‑friendly CLI and export workflow.
 
 ---
 
